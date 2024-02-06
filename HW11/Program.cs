@@ -15,6 +15,12 @@ int WCount(string str)
     string[] strArr = str.Split(" ");
     return strArr.Length;
 }
+int LWLength(string str)
+{
+    string[] strArr = str.Split(" ");
+    string lword = strArr[strArr.Length - 1];
+    return lword.Length;
+}
 
 //Task 1
 
@@ -30,4 +36,12 @@ Console.WriteLine("Enter string: ");
 string str = Console.ReadLine();
 Func<string, int> func = new(WCount);
 int res = func(str);
+Console.WriteLine($"Result : {res}");
+
+//Task 3
+
+Func<string, int> func2 = new(LWLength);
+Console.WriteLine("Enter string: ");
+str = Console.ReadLine();
+res = func2(str);
 Console.WriteLine($"Result : {res}");
