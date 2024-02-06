@@ -10,12 +10,24 @@
     }
     return b == num;
 }
+int WCount(string str)
+{
+    string[] strArr = str.Split(" ");
+    return strArr.Length;
+}
 
 //Task 1
-
 
 Console.Write("Enter Num: ");
 int num;
 Int32.TryParse(Console.ReadLine(),out num);
 Predicate<int> pred = new Predicate<int>(Fib);
-Console.WriteLine($"Result : {pred(num)}"); 
+Console.WriteLine($"Result : {pred(num)}");
+
+//Task 2
+
+Console.WriteLine("Enter string: ");
+string str = Console.ReadLine();
+Func<string, int> func = new(WCount);
+int res = func(str);
+Console.WriteLine($"Result : {res}");
