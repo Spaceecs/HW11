@@ -21,6 +21,35 @@ int LWLength(string str)
     string lword = strArr[strArr.Length - 1];
     return lword.Length;
 }
+bool Validator(string str)
+{
+    Stack<char> stack = new Stack<char>();
+
+    foreach (char ch in str)
+    {
+        if (ch == '(' || ch == '{' || ch == '[')
+        {
+            stack.Push(ch);
+        }
+        else if (ch == ')' || ch == '}' || ch == ']')
+        {
+            if (stack.Count == 0)
+            {
+                return false; 
+            }
+
+            char opening = stack.Pop();
+            if ((ch == ')' && opening != '(') ||
+                (ch == '}' && opening != '{') ||
+                (ch == ']' && opening != '['))
+            {
+                return false; 
+            }
+        }
+    }
+
+    return stack.Count == 0; 
+}
 
 //Task 1
 
@@ -45,3 +74,10 @@ Console.WriteLine("Enter string: ");
 str = Console.ReadLine();
 res = func2(str);
 Console.WriteLine($"Result : {res}");
+
+//Task 4
+
+Console.WriteLine("Enter string: ");
+str = Console.ReadLine();
+Predicate<string> predicate = new(Validator);
+Console.WriteLine($"Result : {predicate(str)}");
