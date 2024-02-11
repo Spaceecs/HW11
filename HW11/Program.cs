@@ -1,4 +1,6 @@
-﻿bool Fib(int num)
+﻿using HW11;
+
+bool Fib(int num)
 {
     int a = 0;
     int b = 1;
@@ -35,7 +37,7 @@ bool Validator(string str)
         {
             if (stack.Count == 0)
             {
-                return false; 
+                return false;
             }
 
             char opening = stack.Pop();
@@ -43,41 +45,49 @@ bool Validator(string str)
                 (ch == '}' && opening != '{') ||
                 (ch == ']' && opening != '['))
             {
-                return false; 
+                return false;
             }
         }
     }
 
-    return stack.Count == 0; 
+    return stack.Count == 0;
 }
 
-//Task 1
+////Task 1
 
-Console.Write("Enter Num: ");
-int num;
-Int32.TryParse(Console.ReadLine(),out num);
-Predicate<int> pred = new Predicate<int>(Fib);
-Console.WriteLine($"Result : {pred(num)}");
+//Console.Write("Enter Num: ");
+//int num;
+//Int32.TryParse(Console.ReadLine(),out num);
+//Predicate<int> pred = new Predicate<int>(Fib);
+//Console.WriteLine($"Result : {pred(num)}");
 
-//Task 2
+////Task 2
 
-Console.WriteLine("Enter string: ");
-string str = Console.ReadLine();
-Func<string, int> func = new(WCount);
-int res = func(str);
-Console.WriteLine($"Result : {res}");
+//Console.WriteLine("Enter string: ");
+//string str = Console.ReadLine();
+//Func<string, int> func = new(WCount);
+//int res = func(str);
+//Console.WriteLine($"Result : {res}");
 
-//Task 3
+////Task 3
 
-Func<string, int> func2 = new(LWLength);
-Console.WriteLine("Enter string: ");
-str = Console.ReadLine();
-res = func2(str);
-Console.WriteLine($"Result : {res}");
+//Func<string, int> func2 = new(LWLength);
+//Console.WriteLine("Enter string: ");
+//str = Console.ReadLine();
+//res = func2(str);
+//Console.WriteLine($"Result : {res}");
 
-//Task 4
+////Task 4
 
-Console.WriteLine("Enter string: ");
-str = Console.ReadLine();
-Predicate<string> predicate = new(Validator);
-Console.WriteLine($"Result : {predicate(str)}");
+//Console.WriteLine("Enter string: ");
+//str = Console.ReadLine();
+//Predicate<string> predicate = new(Validator);
+//Console.WriteLine($"Result : {predicate(str)}");
+
+//Task 5
+
+int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+int[] evenNumbers = numbers.Filter(num => num % 2 == 0);
+Console.WriteLine("Even Numbers: " + string.Join(", ", evenNumbers));
+int[] oddNumbers = numbers.Filter(num => num % 2 != 0);
+Console.WriteLine("Odd Numbers: " + string.Join(", ", oddNumbers));
